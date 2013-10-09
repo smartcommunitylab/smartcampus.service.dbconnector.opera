@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<monitoring serviceURI="smartcampus.services.dbconnector.opera" 
+	operation="GetOperaPayments"
+	xmlns="http://www.example.org/monitoring-schema" 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xsi:schemaLocation="http://www.example.org/monitoring-schema ../../main/resources/monitoring-schema.xsd ">
+	<complexEvents>
+    <complexEvent name="TooManyDataflowErrorsEvent" lang="drools" scope="method">
+      <condition>
+			  Number(intValue >= 1) from accumulate(DataFlowExecResult(result == it.sayservice.platform.core.message.Core.ResultType.ERROR) over window:time(24h),count(true))
+			  Number(intValue == 0) from accumulate(CustomEvent(eventType == 'TooManyDataflowErrorsEvent') over window:time(24h),count(true))
+      </condition>
+      <parameters/>
+    </complexEvent>
+  </complexEvents>
+  <rules>
+    <rule lang="drools">
+      <condition>evt : CustomEvent(eventType == 'TooManyDataflowErrorsEvent')</condition>
+      <reaction>
+      communication.sendAlert("Service "+evt.getServiceId()+"."+evt.getMethodName()+": many DATAFLOW errors");
+      </reaction>
+    </rule>
+  </rules>
+</monitoring>

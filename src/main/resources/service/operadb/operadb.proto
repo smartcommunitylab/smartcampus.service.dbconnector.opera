@@ -1,0 +1,49 @@
+package smartcampus.services.dbconnector.opera.data.message;
+
+import "core.proto";
+
+message DBPayment {
+	optional string idgiada = 1;
+	required string nome = 2;
+	required string cognome = 3;
+	required bool isunitn = 4;
+	required string uidbadge = 5;
+	required string profiloattuale = 6;
+	required string profilopassaggio = 7;
+	required string progressivopassaggio = 8;
+	required string datapassaggio = 9;
+	required string codicemensa = 10;
+	required string descrizionemensa = 11;
+	required string codicepostazione = 12;
+	required string descrizioneprodotto = 13;
+	required string tipoprodotto = 14;
+	required string importototalepassaggio = 15;
+	required string importoprodottodettaglio = 16;
+	required string consumi = 17;
+	required string residuo = 18;	
+}
+
+message DBOperaStudent {
+	optional string idgiada = 1;
+	optional string nome = 2;
+	optional string cognome = 3;
+	optional bool isunitn = 4;
+	optional string uidbadge = 5;
+	optional string consumi = 6;
+	optional string residuo = 7;
+	repeated DBStudentPayment payments = 8;
+}
+
+message DBStudentPayment {
+	required string profiloattuale = 1;
+	required string profilopassaggio = 2;
+	required string progressivopassaggio = 3;
+	required string datapassaggio = 4;
+	required string codicemensa = 5;
+	required string descrizionemensa = 6;
+	required string codicepostazione = 7;
+	required string descrizioneprodotto = 8;
+	required string tipoprodotto = 9;
+	required string importototalepassaggio = 10;
+	required string importoprodottodettaglio = 11;
+}

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<service-definition xmlns="http://www.example.org/interface-schema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.example.org/interface-schema ../interface-schema.xsd ">
+
+	<interface serviceURI="smartcampus.services.dbconnector.opera">
+		<operation name="GetOperaPayments">
+			<parameter name="idGiada" type="String"/>		
+			<output type="smartcampus.services.dbconnector.opera.data.message.Operadb$DBOperaStudent" repeated="false"/>
+		</operation>
+				
+	</interface>
+
+	<implementation package="smartcampus.services.dbconnector.opera">
+		<operationImpl name="GetOperaPayments"/>
+	</implementation>
+
+</service-definition>

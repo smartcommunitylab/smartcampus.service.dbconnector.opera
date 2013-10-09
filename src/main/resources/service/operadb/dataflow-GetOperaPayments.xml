@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataflow xmlns="http://www.example.org/mml-schema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.example.org/mml-schema mml-schema.xsd ">
+
+	<input name="idGiada" type="String" />
+	<variable name="payments" type="java.util.List" />
+
+	<dbConnector name="operaDBConnector" datasourceRef="operaDB"
+		protoClass="smartcampus.services.dbconnector.opera.data.message.Operadb$DBPayment"
+		fullyPopulated="false">
+		<query>"select id_giada AS idada,staging.elenco_passaggi.cognome AS
+			cognome,staging.elenco_passaggi.nome AS nome,is_unitn as
+			isunitn,uid_badge as uidbadge,profilo_attuale as
+			profiloattuale,profilo_passaggio as
+			profilopassaggio,progressivo_passaggio as
+			progressivopassaggio,data_passaggio as datapassaggio,codice_mensa as
+			codicemensa,descrizione_mensa as descrizionemensa,codice_postazione
+			as codicepostazione,descrizione_prodotto as
+			descrizioneprodotto,tipo_prodotto as
+			tipoprodotto,importo_totale_da_passaggio as
+			importototalepassaggio,importo_prodotto_da_dettaglio as
+			importoprodottodettaglio,consumi,residuo from staging.elenco_passaggi,staging.v_info_tessera
+			where id_giada = '" + idGiada + "' and staging.elenco_passaggi.uid_badge = staging.v_info_tessera.uuid"
+		</query>
+		<arguments />
+	</dbConnector>
+
+	<connect name="c1" connector="operaDBConnector" outputVar="payments"
+		transformer="proto" />
+
+	<script outputVar="output">
+		<className>smartcampus.services.dbconnector.opera.script.OperaDBScript
+		</className>
+		<method>mergePayments</method>
+		<variables>
+			<value>payments</value>
+		</variables>
+	</script>
+
+</dataflow>
