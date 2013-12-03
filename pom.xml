@@ -60,12 +60,12 @@
 									<statusParameters>
 										<storable>true</storable>
 										<automaticRefresh>true</automaticRefresh>
-										<delay>#{1000L*15}</delay>
-										<period>#{1000L*60*60*24*7}</period>
-										<periodOnDefault>#{1000L*60*60*24*7}</periodOnDefault>
-										<periodOnFailure>#{1000L*60*60*24*7}</periodOnFailure>
-										<cacheValidityPeriod>#{1000L*60*60*24*15}</cacheValidityPeriod>
-										<validityPeriod>#{1000L*60*60*24*30}</validityPeriod>
+										<delay>#{1000L*25}</delay>
+										<period>#{1000L*60*60*12}</period>
+										<periodOnDefault>#{1000L*60*60*12}</periodOnDefault>
+										<periodOnFailure>#{1000L*60*60*8}</periodOnFailure>
+										<cacheValidityPeriod>#{1000L*60*60*24}</cacheValidityPeriod>
+										<validityPeriod>#{1000L*60*60*24}</validityPeriod>
 										<serviceBlocked>false</serviceBlocked>
 										<dataFlowInvokable>true</dataFlowInvokable>
 										<runnableAfterDelay>true</runnableAfterDelay>
