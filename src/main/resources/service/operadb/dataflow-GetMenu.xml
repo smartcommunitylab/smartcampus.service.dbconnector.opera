@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataflow xmlns="http://www.example.org/mml-schema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.example.org/mml-schema mml-schema.xsd ">
+
+	<variable name="dishes" type="java.util.List" />
+	<variable name="menus" type="java.util.List" />
+	
+	<dbConnector name="operaDBConnector" datasourceRef="operaDB2"
+		protoClass="smartcampus.services.dbconnector.opera.data.message.Operadb$DBDish"
+		fullyPopulated="false">
+		<query>"select id,nome,cal,tipo from piatti"</query>
+		<arguments />
+	</dbConnector>
+
+	<dbConnector name="operaDBConnector2" datasourceRef="operaDB2"
+		protoClass="smartcampus.services.dbconnector.opera.data.message.Operadb$DBMenu"
+		fullyPopulated="false">
+		<query>"select id_piatto as id,data,pasto from menu WHERE extract (month from current_date) = extract (month from data)"</query>
+		<arguments />
+	</dbConnector>		
+
+	<connect name="c1" connector="operaDBConnector" outputVar="dishes"
+		transformer="proto" />
+
+	<connect name="c2" connector="operaDBConnector2" outputVar="menus"
+		transformer="proto" />	
+	
+	<script outputVar="output">
+		<className>smartcampus.services.dbconnector.opera.script.OperaDBScript
+		</className>
+		<method>buildMenu</method>
+		<variables>
+			<value>dishes</value>
+			<value>menus</value>
+		</variables>
+	</script>
+
+
+</dataflow>

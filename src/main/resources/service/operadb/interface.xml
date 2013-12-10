@@ -6,7 +6,9 @@
 			<parameter name="idGiada" type="String"/>		
 			<output type="smartcampus.services.dbconnector.opera.data.message.Operadb$DBOperaStudent" repeated="false"/>
 		</operation>
-				
+		<operation name="GetMenu">
+			<output type="smartcampus.services.dbconnector.opera.data.message.Operadb$DataMenu" repeated="false"/>
+		</operation>			
 	</interface>
 
 	<implementation package="smartcampus.services.dbconnector.opera">
