@@ -9,6 +9,9 @@
 		<operation name="GetMenu">
 			<output type="smartcampus.services.dbconnector.opera.data.message.Operadb$DataMenu" repeated="true"/>
 		</operation>	
+		<operation name="GetAperture">
+			<output type="smartcampus.services.dbconnector.opera.data.message.Operadb$DataOpening" repeated="true"/>
+		</operation>					
 	</interface>
 
 	<implementation package="smartcampus.services.dbconnector.opera">

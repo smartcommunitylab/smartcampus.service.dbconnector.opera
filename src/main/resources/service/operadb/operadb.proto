@@ -56,14 +56,32 @@ message DBDish {
 }
 
 message DBMenu {
-	required string date = 2;
 	required string id = 1;
-	repeated string dishes = 3;
+	required string data = 2;
+	required string pasto = 3;
 }
 
 message DataMenu {
 	required string date = 1;
 	required string type = 2;
 	repeated DBDish dishes = 3;
+}
+
+message DBApertura {
+	required string id = 1;
+	required string data = 2;
+	required string giorni = 3;
+	required string descrmensa = 4;
+	required string descrzona = 5;
+}
+
+message DataOpening {
+	required string descrzona = 1;
+	repeated DataOpeningCanteen openings = 2;
+}
+
+message DataOpeningCanteen {
+	required string descrmensa = 1;
+	repeated string date = 2;
 }
 

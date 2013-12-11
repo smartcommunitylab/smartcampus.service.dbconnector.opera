@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataflow xmlns="http://www.example.org/mml-schema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.example.org/mml-schema mml-schema.xsd ">
+
+	<variable name="opening" type="java.util.List" />
+	<variable name="menus" type="java.util.List" />
+	
+	<dbConnector name="operaDBConnector" datasourceRef="operaDB2"
+		protoClass="smartcampus.services.dbconnector.opera.data.message.Operadb$DBApertura"
+		fullyPopulated="false">
+		<query>"select id_mensa as id,data,giorni,descr_mensa as descrMensa,descr_zona as descrZona from apertura_mense"</query>
+		<arguments />
+	</dbConnector>
+
+	<connect name="c1" connector="operaDBConnector" outputVar="opening"
+		transformer="proto" />
+
+	<script outputVar="output">
+		<className>smartcampus.services.dbconnector.opera.script.OperaDBScript
+		</className>
+		<method>buildAperture</method>
+		<variables>
+			<value>opening</value>
+		</variables>
+	</script>
+
+
+</dataflow>
