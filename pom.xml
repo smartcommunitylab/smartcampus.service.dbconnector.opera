@@ -80,7 +80,7 @@
 										<period>#{1000L*60*60*24}</period>
 										<periodOnDefault>#{1000L*60*60*24}</periodOnDefault>
 										<periodOnFailure>#{1000L*60*60*24}</periodOnFailure>
-										<cacheValidityPeriod>#{1000L*60*60*24*15}</cacheValidityPeriod>
+										<cacheValidityPeriod>#{1000L*60}</cacheValidityPeriod>
 										<validityPeriod>#{1000L*60*60*24}</validityPeriod>
 										<serviceBlocked>false</serviceBlocked>
 										<dataFlowInvokable>true</dataFlowInvokable>
