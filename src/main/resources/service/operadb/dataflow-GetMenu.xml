@@ -15,7 +15,10 @@
 	<dbConnector name="operaDBConnector2" datasourceRef="operaDB2"
 		protoClass="smartcampus.services.dbconnector.opera.data.message.Operadb$DBMenu"
 		fullyPopulated="false">
+		<query>"select id_piatto as id,data,pasto from menu"</query>
+		<!-- 
 		<query>"select id_piatto as id,data,pasto from menu WHERE extract (month from data) between extract (month from current_date) - 1 and extract (month from current_date)"</query>
+		 -->
 		<arguments />
 	</dbConnector>		
 
